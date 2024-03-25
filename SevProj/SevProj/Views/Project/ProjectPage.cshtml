@@ -1,0 +1,16 @@
+﻿@using SevProj.Models;
+@{
+    ViewData["Title"] = "Project Page";
+}
+@model Project;
+<head>
+
+</head>
+<body>
+    <div>@Model.Id</div>
+    <div>@Model.Name</div>
+    <div>@Model.Description</div>
+    <div>@Model.DirectionId</div>
+    <a href="./projPresentations/presentation-@Model.Id .pdf" download="newfilename">Download the pdf</a>
+    <img src="projImages/image-@Model.Id .png"></img>
+</body>

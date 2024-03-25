@@ -1,0 +1,110 @@
+﻿@using SevProj.Models;
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model Tuple<List<Project>, List<Direction>>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container container">
+                <div class="header__row">
+                    <div class="header__element">
+                        <div class="header__logo">
+                            <img src="img/logo.png" alt="" class="header__logo-img">
+                        </div>
+                    </div>
+                    <div class="header__element">
+                        <div class="search__button">
+                            <form acrion = "" method="post">
+                            <input type="search" class="search__input" placeholder="Поиск" name="search">
+                            <img src="img/search.svg" alt="" class="search__icon">
+                            </form>
+                        </div>
+                        <button class="login__button">Log In</button>
+                    </div>
+                </div>
+            </div>
+            <div class="intro__container container">
+                <h1 class="intro__title">Витрина студеческих проектов</h1>
+                <h3 class="intro__subtitle">Познакомьтесь с самыми яркими студенческими проектами Севастопольского Государственного университета</>
+            </div>
+        </header>
+        <section class="best-projects">
+            <div class="best-projects__container container">
+                <h2 class="best-projects__title">Лучшие Проекты</h2>
+                <div class="best-projects__swiper swiper">
+                    <div class="best-projects__swiper-wrapper swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="img/image (4).png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/image (6).png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/image (9).png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/image (10).png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/image (11).png" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </section>
+        <section class="ways">
+            <div class="ways__container container">
+                <h2 class="ways__title">Направления</h2>
+                <div class="ways__row">
+                    @foreach (var d in Model.Item2)
+                    {
+                        <div class="ways__element" style="background-image: url('/DirImages/image-@d.Id .png'">
+                            <div class="ways__element-title">@d.Name</div>
+                            <form action="" method="post">
+                                <button type="submit" name="name" value="@d.Id"><img src="/DirImages/image-@d.Id .png"></button>
+                            </form>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+        <section class="projects">
+            <div class="projects__container container">
+                <h2 class="projects__title">Проекты</h2>
+                <div class="projects__column">
+                    <div class="projects__row">
+            @foreach (var p in Model.Item1)
+            {
+                <div class="projects__element" style="background-image: url('/projImages/image-@p.Id .png'">
+                                <form action="/Project" method="post">
+                                    <button type="submit" name="projId" value="@p.Id"><img src="1"></button>
+                                </form>
+                    <div class="projects__text")>
+                        <div class="projects__element-title">@p.Name</div>
+                        <div class="projects__element-subtitle">@p.Description</div>
+                    </div>
+                </div>
+            }
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="footer__container container"><img src="/img/logo.png" alt="" class="footer__logo"></div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
